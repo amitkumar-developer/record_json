@@ -2,16 +2,16 @@ import React from 'react';
 import Records from './record.json';
 import Datas from './data.json';
 function App() {
-  const modifiedRecords = Records.map((record, index) => ({
-    ...record,
-    avg_response_time: record.avg_response_time.toFixed(2),
-    max_response_time: record.max_response_time.toFixed(2),
-    median_response_time: record.median_response_time.toFixed(2),
-    min_response_time: record.min_response_time.toFixed(2),
-    num_requests: record.num_requests.toLocaleString(),
-    total_rpm: record.total_rpm.toFixed(2),
-    total_rps: record.total_rps.toFixed(2),
-  }));
+  // const modifiedRecords = Records.map((record, index) => ({
+  //   ...record,
+  //   avg_response_time: record.avg_response_time.toFixed(2),
+  //   max_response_time: record.max_response_time.toFixed(2),
+  //   median_response_time: record.median_response_time.toFixed(2),
+  //   min_response_time: record.min_response_time.toFixed(2),
+  //   num_requests: record.num_requests.toLocaleString(),
+  //   total_rpm: record.total_rpm.toFixed(2),
+  //   total_rps: record.total_rps.toFixed(2),
+  // }));
 
   return (
     <div className="App">
