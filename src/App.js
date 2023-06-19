@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Records from './record.json';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <table className="record-table" style={{ border: '1px solid black',padding: '8px', borderCollapse: 'collapse' }}>
+        <thead>
+          <tr>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Avg Response Time</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Max Response Time</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Median Response Time</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Min Response Time</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Num Requests</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Response Time Percentiles</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Response Times</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Request Type</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Total RPM</th>
+            <th style={{ border: '1px solid black', padding: '8px' }}>Total RPS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Records.map((record, index) => (
+            <tr >
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.avg_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.max_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.median_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.min_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.num_requests}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{JSON.stringify(record.response_time_percentiles)}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{JSON.stringify(record.response_times)}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.request_type}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.total_rpm}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{record.total_rps}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
