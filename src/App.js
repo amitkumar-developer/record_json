@@ -1,7 +1,18 @@
 import React from 'react';
 import Records from './record.json';
-
+import Datas from './data.json';
 function App() {
+  const modifiedRecords = Records.map((record, index) => ({
+    ...record,
+    avg_response_time: record.avg_response_time.toFixed(2),
+    max_response_time: record.max_response_time.toFixed(2),
+    median_response_time: record.median_response_time.toFixed(2),
+    min_response_time: record.min_response_time.toFixed(2),
+    num_requests: record.num_requests.toLocaleString(),
+    total_rpm: record.total_rpm.toFixed(2),
+    total_rps: record.total_rps.toFixed(2),
+  }));
+
   return (
     <div className="App">
       <table className="record-table" style={{ border: '1px solid black',padding: '8px', borderCollapse: 'collapse' }}>
@@ -32,6 +43,20 @@ function App() {
               <td style={{ border: '1px solid black', padding: '8px' }}>{record.request_type}</td>
               <td style={{ border: '1px solid black', padding: '8px' }}>{record.total_rpm}</td>
               <td style={{ border: '1px solid black', padding: '8px' }}>{record.total_rps}</td>
+            </tr>
+          ))}
+          {Datas.map((data, index) => (
+            <tr >
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.avg_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.max_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.median_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.min_response_time}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.num_requests}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{JSON.stringify(data.response_time_percentiles)}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{JSON.stringify(data.response_times)}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.request_type}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.total_rpm}</td>
+              <td style={{ border: '1px solid black', padding: '8px' }}>{data.total_rps}</td>
             </tr>
           ))}
         </tbody>
